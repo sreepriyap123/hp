@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Copyright © 2022 HP. All rights reserved.
+ */ -->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Store/etc/config.xsd">
+    <default>
+        <payment>
+            <hp_cc>
+                <active>1</active>
+                <model>HP\CC\Model\PaymentMethod</model>
+                <order_status>pending</order_status>
+                <title>HP Payment</title>
+                <allowspecific>0</allowspecific>
+            </hp_cc>
+        </payment>
+    </default>
+</config>
