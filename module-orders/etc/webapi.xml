@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Copyright © 2021 HP. All rights reserved.
+ */ -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+        <!-- need to remove start-->
+        <route url="/V1/order/trackinginfo/:incrementId/:sku" method="PUT">
+            <service class="HP\Orders\Api\OrderRepositoryInterface" method="saveTrackingInfo" />
+            <resources>
+                <resource ref="anonymous" />
+            </resources>
+        </route>
+        <route url="/V1/order/status/:incrementId" method="PUT">
+            <service class="HP\Orders\Api\OrderRepositoryInterface" method="updateStatus" />
+            <resources>
+                <resource ref="anonymous" />
+            </resources>
+        </route>
+        <!-- need to remove end-->
+        <route url="/V1/order/fedexdataupdate/:incrementId" method="PUT">
+            <service class="HP\Orders\Api\OrderDetailsRepositoryInterface" method="save" />
+            <resources>
+                <resource ref="anonymous" />
+            </resources>
+        </route>
+        <route url="/V1/customer/orders" method="GET">
+            <service class="HP\Orders\Api\OrderRepositoryInterface" method="getOrders" />
+            <resources>
+                <resource ref="anonymous" />
+            </resources>
+        </route>
+        <route url="/V1/customer/token" method="POST">
+            <service class="HP\Orders\Api\CustomerTokenServiceInterface" method="createCustomerAccessToken"/>
+            <resources>
+                <resource ref="anonymous"/>
+            </resources>
+        </route>
+        <route url="/V1/order/status1/:incrementId" method="PUT">
+            <service class="HP\Orders\Api\OrderRepositoryInterface" method="changeStatus" />
+            <resources>
+                <resource ref="Magento_Sales::sales_invoice" />
+            </resources>
+        </route>
+        <route url="/V1/order/tracking/:incrementId" method="PUT">
+            <service class="HP\Orders\Api\OrderRepositoryInterface" method="saveTracking" />
+            <resources>
+                <resource ref="Magento_Sales::sales_invoice" />
+            </resources>
+        </route>
+        <route url="/V1/order/:incrementId" method="GET">
+            <service class="HP\Orders\Api\OrderRepositoryInterface" method="getOrder" />
+            <resources>
+                <resource ref="Magento_Sales::actions_view" />
+            </resources>
+        </route>
+</routes>

@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © 2021 HP. All rights reserved.
+ */
+?>
+<?php
+  $viewModel = $block->getViewModel();
+  $order = $block->getOrder();
+  $result = $viewModel->getDiagnosisResult($order->getIncrementId())
+?>
+<?php if ($result): ?>
+<section class="admin__page-section order-addresses">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Additional Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">     
+          <div style="background-color: #f1f1f1;padding:10px;">
+            <b><?= $block->escapeHtml(__('Diagnosis Result:'));?></b>&nbsp;&nbsp;&nbsp;
+            <?= $block->escapeHtml($result); ?>
+          </div>
+    </div>
+</section>
+<?php endif; ?>

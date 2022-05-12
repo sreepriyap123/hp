@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 HP. All rights reserved.
+ */
+-->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+        <default>
+            <checkout>
+                <hp_restrictions>
+                    <enable_orderrestrictions>1</enable_orderrestrictions>
+                    <order_allowedsstatus>denied,complete,treatment</order_allowedsstatus>
+                    <orderrestriction_message>You can’t place new order</orderrestriction_message>
+                    <enable_cartrestrictions>1</enable_cartrestrictions>
+                    <cartrestriction_message>You can’t add new item for this order.</cartrestriction_message>
+                </hp_restrictions>
+            </checkout>
+        </default>
+    </config>

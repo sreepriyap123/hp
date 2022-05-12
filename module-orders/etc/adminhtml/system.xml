@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 HP. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="hp_authorization" translate="label" sortOrder="10">
+            <label>HP Configuration</label>
+        </tab>
+        <section id="hp_authorization" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                 showInStore="0">
+            <label>HP Authorization</label>
+            <tab>hp_authorization</tab>
+            <resource>HP_Orders::hp_orders</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Authorization URL Configuration</label>
+                <field id="webapp_url" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Web App Authorization URL</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="clinicalapp_url" translate="label comment" type="text" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Clinical App Authorization URL</label>
+                    <validate>required-entry</validate>
+                </field>                            
+            </group>
+            <group id="hp_email_notification" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Email Configuration</label>               
+                <field id="email_api_url" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Email API Url</label>
+                    <validate>required-entry</validate>                   
+                </field>
+                <field id="email_api_key" translate="label comment" type="obscure" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Email API Key</label>
+                    <validate>required-entry</validate>                   
+                </field>                     
+            </group>
+        </section>        
+        <section id="checkout">
+            <resource>HP_Orders::hp_orders</resource>
+            <group id="hp_restrictions" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
+                <label>HP Restrictions</label>
+                <field id="enable_orderrestrictions" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Enable Order Restrictions</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="order_allowedsstatus" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Allow Place Order only for the Order Statuses</label>
+                    <source_model>HP\Orders\Model\Config\Source\OrderStatus</source_model>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="*/*/enable_orderrestrictions">1</field>
+                    </depends>
+                </field>
+                <field id="orderrestriction_message" translate="label comment" type="textarea" sortOrder="30" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Order Restriction Error Message</label>
+                    <validate>validate-no-html-tags</validate>
+                    <depends>
+                        <field id="*/*/enable_orderrestrictions">1</field>
+                    </depends>
+                </field>
+                 <field id="enable_cartrestrictions" translate="label comment" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Enable Single SKU in Cart Restriction</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="cartrestriction_message" translate="label comment" type="textarea" sortOrder="50" showInDefault="1"
+                       showInWebsite="0" showInStore="0">
+                    <label>Single SKU Restriction Error Message</label>
+                    <validate>validate-no-html-tags</validate>
+                    <depends>
+                        <field id="*/*/enable_cartrestrictions">1</field>
+                    </depends>
+                </field>       
+            </group>
+        </section>
+    </system>
+</config>

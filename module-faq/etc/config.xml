@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 HP. All rights reserved.
+ */
+-->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+        <default>
+            <cms>
+                <general>
+                    <page_size>10</page_size>
+                </general>
+            </cms>
+        </default>
+    </config>

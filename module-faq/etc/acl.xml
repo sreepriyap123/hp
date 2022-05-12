@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 HP. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+   <acl>
+     <resources>
+        <resource id="Magento_Backend::admin">
+          <resource id="Magento_Backend::content">
+            <resource id="Magento_Backend::content_elements">
+              <resource id="HP_Faq::faq" title="FAQs" sortOrder="110" >
+                <resource id="HP_Faq::add" title="Create" sortOrder="100" />
+                <resource id="HP_Faq::delete" title="Delete" sortOrder="200" />
+                <resource id="HP_Faq::grid_list" title="View" sortOrder="50" />
+                <resource id="HP_Faq::edit" title="Edit" sortOrder="150" />
+              </resource>
+            </resource>
+           </resource>
+        </resource>
+     </resources>
+   </acl>
+</config>

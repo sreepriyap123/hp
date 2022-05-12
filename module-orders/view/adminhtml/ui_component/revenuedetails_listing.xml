@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 HP. All rights reserved.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">revenuedetails_listing.revenuedetails_listing_data_source</item>
+            <item name="deps" xsi:type="string">revenuedetails_listing.revenuedetails_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">hp_orders_revenuedetails_columns</item>
+    </argument>
+    <dataSource name="revenuedetails_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">revenuedetails_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">item_id</argument>
+            <argument name="requestFieldName" xsi:type="string">item_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">item_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+   
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>   
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        <exportButton name="export_button" class="HP\Orders\Component\ExportButton"/>
+    </listingToolbar>
+    <columns name="hp_orders_revenuedetails_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">item_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="increment_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+			    <item name="filter" xsi:type="string">text</item>
+                <item name="label" xsi:type="string" translate="true">PreOrder</item>
+                </item>
+            </argument>
+        </column>
+        <column name="created_at">
+	        <argument name="data" xsi:type="array">
+		        <item name="js_config" xsi:type="array">
+		            <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/date</item>
+		        </item>
+		        <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="align" xsi:type="string">left</item>
+                    <item name="label" xsi:type="string" translate="true">Purchase Date</item>
+                </item>
+	        </argument>
+	    </column>
+        <column name="oms_order_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+ 		            <item name="filter" xsi:type="string">textRange</item>
+                    <item name="label" xsi:type="string" translate="true">OMS Order ID</item>
+                </item>
+            </argument>
+        </column>
+        <column name="oms_order_status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">OMS Order Status</item>
+                </item>
+            </argument>
+        </column>
+        <column name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Orthotic Style</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="qty_ordered">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Quantity</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </column>
+        <column name="grand_total">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                     <item name="label" xsi:type="string" translate="true">Price</item>
+                </item>
+            </argument>
+        </column>
+        <column name="discount">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Discount</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+         <!-- <column name="tax_amount">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Tax</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column> -->
+         <column name="total_refunded">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Refund</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+        <column name="customer_fname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Customer First Name</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+        <column name="customer_lname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Last Name</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_street">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping Address 1</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+        <column name="shipping_address_2">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Shipping Address 2</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+         <column name="shipping_city">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping City</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+         <column name="shipping_region">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Shipping State</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+         <column name="shipping_postcode">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Shipping Zip Code</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+         <column name="shipping_telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Shipping Phone Number</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_street">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Billing Address 1</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+        <column name="billing_address_2">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Billing Address 2</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                    <item name="sortable" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </column>
+       <column name="billing_city">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Billing City</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+         <column name="billing_region">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Billing State</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+         <column name="billing_pincode">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Billing Zip Code</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+         <column name="billing_telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Billing Phone Number</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column>
+         <!-- <column name="payment">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Payment GW</item>
+                    <item name="dataType" xsi:type="string">input</item>
+                </item>
+            </argument>
+        </column> -->
+    </columns>
+</listing>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Copyright © 2021 HP. All rights reserved.
+*/ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="HP\Orders\Api\OrderRepositoryInterface"
+                type="HP\Orders\Model\OrderRepository" />
+    <preference for="HP\Orders\Api\OrderDetailsRepositoryInterface"
+                type="HP\Orders\Model\OrderDetailsRepository" />
+    <preference for="HP\Orders\Api\Data\OrderDetailsInterface"
+                type="HP\Orders\Model\Data\OrderDetails" />
+    <preference for="HP\Orders\Api\CustomerTokenServiceInterface" type="HP\Orders\Model\CustomerTokenService" />
+    <type name="\Magento\Quote\Model\QuoteManagement">
+        <plugin name="hp_quotemanagement" type="HP\Orders\Plugin\QuoteManagement" sortOrder="1" disabled="false" />
+    </type>
+    <type name="\Magento\Quote\Model\Quote">
+        <plugin name="hp_quote" type="HP\Orders\Plugin\Quote" sortOrder="1" disabled="false" />
+    </type>
+    <type name="HP\Orders\Model\ResourceModel\Report\RevenueDetails\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sales_order_item</argument>
+            <argument name="eventPrefix" xsi:type="string">sales_order_item</argument>
+            <argument name="eventObject" xsi:type="string">order</argument>
+            <argument name="resourceModel" xsi:type="string">HP\Orders\Model\ResourceModel\Report\RevenueDetails</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="revenuedetails_listing_data_source" xsi:type="string">HP\Orders\Model\ResourceModel\Report\RevenueDetails\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
