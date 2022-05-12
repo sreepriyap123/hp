@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Copyright © 2022 HP. All rights reserved.
+ */ -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+        <route url="/V1/order/paymentInfo/:incrementId" method="PUT">
+            <service class="HP\CC\Api\CCManagementInterface" method="updatePaymentInfo" />
+            <resources>
+                <resource ref="anonymous" />
+            </resources>
+        </route>
+</routes>

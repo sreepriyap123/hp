@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- /**
+ * Copyright © 2022 HP. All rights reserved.
+ */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="HP\CC\Api\CCRepositoryInterface"
+                type="HP\CC\Model\CCRepository" />
+    <preference for="HP\CC\Api\Data\CCInterface"
+                type="HP\CC\Model\Data\CC" />
+    <preference for="HP\CC\Api\CCManagementInterface"
+                type="HP\CC\Model\CCManagement" /> 
+</config>

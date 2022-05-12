@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 HP. All rights reserved.
+*/
+-->
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    
+    <table name="hp_cc_additional_info" resource="default" engine="innodb" comment="hp_megamenu">
+        <column xsi:type="int" name="cc_id" unsigned="true" nullable="false" padding="10" identity="true" comment="CCId"/>
+        <column xsi:type="varchar" name="increment_id" nullable="false" length="255" comment="Increment Id"/>
+        <column xsi:type="varchar" name="order_id" nullable="false" length="255" comment="Order Id"/>
+        <column xsi:type="varchar" name="payment_plan_item" nullable="true" length="255" comment="Payment Plan Item"/>
+        <column xsi:type="varchar" name="epayment_type" nullable="true" length="255" comment="Electronic Payment Type"/>
+        <column xsi:type="varchar" name="epayment" nullable="true" length="255" comment="Electronic Payment"/>
+        <column xsi:type="datetime" name="epayment_validity_startdate" nullable="true" comment="EPaymentValidity StartDate" />
+        <column xsi:type="varchar" name="epayment_validity_enddate" nullable="true"  comment="EPayment Validity EndDate"  />
+        <column xsi:type="varchar" name="epayment_holder_name" nullable="true" length="255" comment="Electronic Payment HolderName"/>
+        <column xsi:type="varchar" name="authorized_amount" nullable="true" length="255" comment="AuthorizedAmount InAuthznCurrency" />
+        <column xsi:type="varchar" name="digital_payment_service" nullable="true" length="255" comment="Authorization ByDigitalPaymentService" />
+        <column xsi:type="varchar" name="authorization_acquirer" nullable="true" length="255" comment="Authorization ByAcquirer" />
+        <column xsi:type="varchar" name="authorization_currency" nullable="true" length="255" comment="Authorization Currency" />
+        <column xsi:type="datetime" name="authorization_date" nullable="true" comment="Authorization Date" />
+        <column xsi:type="varchar" name="authorization_time" nullable="true" comment="Authorization Time" />
+        <column xsi:type="varchar" name="epayment_digital_service" nullable="true" length="255" comment="EPayment ByDigital PaymentService" />
+        <column xsi:type="varchar" name="payment_service_provider" nullable="true" length="255" comment="Payment Service Provider" />
+        <column xsi:type="varchar" name="payment_service_provider_currency" nullable="true" length="255" comment="Payment By Payment Service Provider" />
+        <column xsi:type="varchar" name="transaction_service_provider" nullable="true" length="255" comment="Transaction By Payment Service Provider" />
+        <column xsi:type="varchar" name="merchant_clearing_house" nullable="true" length="255" comment="Merchant By Clearing House" />
+        <column xsi:type="text" name="max_authorized_amount" nullable="true" comment="MaximumToBe Authorized Amount" />
+        <column xsi:type="varchar" name="zz_pgstoken" nullable="true" length="255" comment="PGS Token" />
+        <column xsi:type="varchar" name="zz_lastfour" nullable="true" length="255" comment="PGS Token LastFourDigits" />
+        <column xsi:type="varchar" name="zz_firstsix" nullable="true" length="255" comment="PGS Token FirstSixDigits" />
+        <column xsi:type="varchar" name="zz_ccsign" nullable="true" length="255" comment="PGS Credit Card Sign" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="cc_id"/>
+        </constraint>
+    </table>
+</schema>
