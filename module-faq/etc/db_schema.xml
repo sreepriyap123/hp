@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2022 HP. All rights reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="faq" resource="default" engine="innodb" comment="FAQ details">
+        <column xsi:type="int" name="faq_id" nullable="false" identity="true" comment="FAQ ID"/>
+        <column xsi:type="text" name="question" nullable="true" comment="Question"/>
+        <column xsi:type="text" name="answer" nullable="true" comment="Answer"/>
+        <column xsi:type="int" name="sort_order" nullable="false" comment="Sort order"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="faq_id"/>
+        </constraint>
+        <index referenceId="FAQ" indexType="fulltext">
+            <column name="answer"/>
+            <column name="question"/>
+        </index>
+    </table>
+</schema>

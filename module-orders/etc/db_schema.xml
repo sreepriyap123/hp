@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2021 HP. All rights reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="order_fedex_details" resource="sales" engine="innodb" comment="Order FedEx Details">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Order ID"/>
+        <column xsi:type="text" name="nickname" nullable="true"  comment="Nickname"/>
+        <column xsi:type="text" name="title" nullable="true"  comment="Title"/>
+        <column xsi:type="text" name="department" nullable="true"  comment="Department"/>
+        <column xsi:type="text" name="extension_number" nullable="true" comment="Extension Number"/>
+        <column xsi:type="text" name="pager_number" nullable="true" comment="Pager Number"/>
+        <column xsi:type="text" name="mobile_phone_number" nullable="true"  comment="Mobile Phone Number"/>
+        <column xsi:type="text" name="verified_flag" nullable="true" comment="Verified Flag"/>
+        <column xsi:type="text" name="accepted_flag" nullable="true"  comment="Accepted Flag"/>
+        <column xsi:type="text" name="valid_flag" nullable="true" comment="Valid Flag"/>
+        <column xsi:type="text" name="residential_flag" nullable="true" comment="Residential Flag"/>
+        <column xsi:type="text" name="customs_id_ein" nullable="true" comment="Customs ID EIN"/>
+        <column xsi:type="text" name="reference_description" nullable="true"  comment="Reference Description"/>
+        <column xsi:type="text" name="service_type_code" nullable="true"  comment="Service Type Code"/>
+        <column xsi:type="text" name="package_type_code" nullable="true"  comment="Package Type Code"/>
+        <column xsi:type="text" name="collection_method_code" nullable="true"  comment="Collection Method Code"/>
+        <column xsi:type="text" name="bill_code" nullable="true"  comment="Bill Code"/>
+        <column xsi:type="text" name="bill_account_number" nullable="true"  comment="Bill Account Number"/>
+        <column xsi:type="text" name="duty_bill_code" nullable="true"  comment="Duty Bill Code"/>
+        <column xsi:type="text" name="duty_bill_account_number" nullable="true"  comment="Duty Bill Account Number"/>
+        <column xsi:type="text" name="insight_id_number" nullable="true"  comment="Insight ID Number"/>
+        <column xsi:type="text" name="ground_reference_description" nullable="true"  comment="Ground Reference Description"/>
+        <column xsi:type="text" name="shipment_notification_recipient_email" nullable="true"  comment="Shipment Notification Recipient Email"/>
+        <column xsi:type="text" name="recipient_email_language" nullable="true"  comment="Recipient Email Language"/>
+        <column xsi:type="text" name="recipient_email_shipment_notification" nullable="true"  comment="Recipient Email Shipment notification"/>
+        <column xsi:type="text" name="recipient_email_exception_notification" nullable="true"  comment="Recipient Email Exception notification"/>
+        <column xsi:type="text" name="recipient_email_delivery_notification" nullable="true"  comment="Recipient Email Delivery notification"/>
+        <column xsi:type="text" name="partner_type_codes" nullable="true"  comment="Partner Type Codes"/>
+        <column xsi:type="text" name="net_return_bill_account_number" nullable="true"  comment="Net Return Bill Account Number"/>
+        <column xsi:type="text" name="customs_id_type_code" nullable="true"  comment="Customs ID Type Code"/>
+        <column xsi:type="text" name="address_type_code" nullable="true"  comment="Address Type Code"/>
+        <column xsi:type="text" name="shipment_notification_sender_email" nullable="true"  comment="Shipment Notification Sender Email"/>
+        <column xsi:type="text" name="sender_email_language" nullable="true"  comment="Sender Email Language"/>
+        <column xsi:type="text" name="sender_email_shipment_notification" nullable="true"  comment="Sender Email Shipment notification"/>
+        <column xsi:type="text" name="sender_email_exception_notification" nullable="true"  comment="Sender Email Exception notification"/>
+        <column xsi:type="text" name="sender_email_delivery_notification" nullable="true"  comment="Sender Email Delivery notification"/>
+        <column xsi:type="text" name="recipient_email_pickup_notification" nullable="true"  comment="Recipient Email Pickup notification"/>
+        <column xsi:type="text" name="sender_email_pickup_notification" nullable="true"  comment="Sender Email Pickup notification"/>
+        <column xsi:type="text" name="op_co_type_cd" nullable="true"  comment="OpCoTypeCd"/>
+        <column xsi:type="text" name="broker_account_id" nullable="true"  comment="BrokerAccounttID"/>
+        <column xsi:type="text" name="broker_tax_id" nullable="true"  comment="Broker Tax ID"/>
+        <column xsi:type="text" name="default_broker_id" nullable="true" comment="Default Broker ID"/>
+        <column xsi:type="text" name="recipient_email_tendered_notification" nullable="true"  comment="Recipient Email Tendered notification"/>
+        <column xsi:type="text" name="sender_email_tendered_notification" nullable="true"  comment="Sender Email Tendered notification"/>
+        <column xsi:type="text" name="user_account_number" nullable="true"  comment="User Account Number"/>
+        <column xsi:type="text" name="delivery_instructions" nullable="true"  comment="Delivery Instructions"/>
+        <column xsi:type="text" name="estimated_delivery_flag" nullable="true" comment="Estimated Delivery Flag"/>
+        <column xsi:type="text" name="sender_estimated_delivery_flag" nullable="true" comment="Sender Estimated Delivery Flag"/>
+        <column xsi:type="text" name="shipment_notification_sender_delivery_channel" nullable="true"  comment="Shipment Notification Sender Delivery Channel"/>
+        <column xsi:type="text" name="shipment_notification_sender_mobile_no" nullable="true"  comment="Shipment Notification Sender Mobile No"/>
+        <column xsi:type="text" name="shipment_notification_sender_mobile_no_country" nullable="true"  comment="Shipment Notification Sender MobileNo Country"/>
+        <column xsi:type="text" name="shipment_notification_sender_mobile_no_language" nullable="true"  comment="Shipment Notification Sender MobileNo Language"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="ORDER_FEDEX_DETAILS_ORDER_ID_SALES_ORDER_ENTITY_ID"
+                    table="order_fedex_details" column="order_id" referenceTable="sales_order"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

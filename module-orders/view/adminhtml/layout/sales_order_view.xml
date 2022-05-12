@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Copyright © 2021 HP. All rights reserved.
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>      
+       <referenceBlock name="order_tab_info">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">HP_Orders::order/view/tab/info.phtml</argument>
+            </action>
+            <block name="arize_additional_info" class="Magento\Sales\Block\Adminhtml\Order\View\Info" template="HP_Orders::order/view/additional_info.phtml" >
+                <arguments>
+                    <argument name="view_model" xsi:type="object">HP\Orders\ViewModel\AdditionalInfo</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="order_items">
+            <arguments>
+                <argument name="columns" xsi:type="array">
+                    <item name="oms_attributes" xsi:type="string" translate="true">OMS Info</item>
+                </argument>
+            </arguments>
+            <referenceBlock name="default_order_items_renderer">
+                <arguments>
+                    <argument name="columns" xsi:type="array">
+                        <item name="oms_attributes" xsi:type="string" translate="true">col-omsattributes</item>
+                    </argument>
+                </arguments>
+            </referenceBlock>
+            <block class="Magento\Sales\Block\Adminhtml\Items\Column\Name" name="column_oms_attributes"
+                   template="HP_Orders::order/view/oms_attributes.phtml" group="column" />
+        </referenceBlock>
+    </body>
+</page>
+

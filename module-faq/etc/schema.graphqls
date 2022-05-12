@@ -1,0 +1,22 @@
+type Query {
+    faqs(
+        filter: FaqsFilterInput @doc(description: "Defines the filter to use for searching faqs"),
+        currentPage: Int = 1 @doc(description: "Specifies which page of results to return. The default value is 1"),
+        # pageSize: Int = 20 @doc(description: "Specifies the maximum number of results to return at once. The default value is 20"),
+    ): Faqs @resolver(class: "HP\\Faq\\Model\\Resolver\\Faqs") @doc(description: "Retrieves the faqs that match the conditions defined in the filter. Throws an error if there isn't an faq associated with it.")
+}
+input FaqsFilterInput @doc(description: "Identifies the filter to use for filtering faqs.") {
+    faq_id: FilterStringTypeInput @doc(description: "Filters by faq id.")
+}
+type Faqs @doc(description: "The collection of faqs that match the conditions defined in the filter.") {
+    items: [Faq] @doc(description: "An array of faqs")
+    total_count: Int @doc(description: "The total number of faqs available")
+    page_size: Int @doc(description: "The page size.")
+    current_page: Int @doc(description: "The current page.")
+}
+
+type Faq @doc(description: "Contains details about each of the faq.") {
+    id: ID! @doc(description: "The unique ID for a Faq object")
+    question: String! @doc(description: "The question")
+    answer: String @doc(description: "The answer")
+}

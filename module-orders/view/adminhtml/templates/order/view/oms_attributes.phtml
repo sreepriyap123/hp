@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © 2021 HP. All rights reserved.
+ */
+?>
+<?php
+$item = $block->getItem();
+?>
+<?php if ($omsId = $item->getOmsOrderId()):?>
+  <div><span><?= $block->escapeHtml(__('Id : ')) ?></span><?= $block->escapeHtml($omsId); ?></div>
+<?php endif;?>
+<?php if ($omsStatus = $item->getOmsOrderStatus()):?>
+  <div class="item-options">
+    <span><?= $block->escapeHtml(__('Status : ')) ?></span><?= $block->escapeHtml($omsStatus) ?>
+  </div>
+<?php endif;?>
+<?php if ($deliveryCompany = $item->getDeliveryCompany()):?>
+  <div class="item-options">
+    <span><?= $block->escapeHtml(__('Delivery Company : ')) ?></span><?= $block->escapeHtml($deliveryCompany); ?>
+  </div>
+<?php endif;?>
+<?php if ($shippingNumber = $item->getShippingNumber()):?>
+  <div class="item-options">
+    <span><?= $block->escapeHtml(__('Shipping Number : ')) ?></span><?= $block->escapeHtml($shippingNumber) ?>
+  </div>
+<?php endif;?>
